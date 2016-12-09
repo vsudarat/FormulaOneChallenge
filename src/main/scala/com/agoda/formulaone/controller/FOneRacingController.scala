@@ -38,12 +38,14 @@ class FOneRacingController(val racingCarFactory: ICarFactory, val assessTimeFram
         })
       currentRacingCars = currentRacingCars.filter(car => car.getCurrentDistance < trackLength)
 
+      printRacingState(currentRacingCars, racingDuration)
+
       //apply racing rule
       assessmentSeq.foreach(a => {
         a.assess(currentRacingCars)
       })
 
-      printRacingState(currentRacingCars, racingDuration)
+
     }
 
     racingResult
@@ -62,7 +64,7 @@ class FOneRacingController(val racingCarFactory: ICarFactory, val assessTimeFram
   }
 
   private def printRacingState(racingCars: List[IRacingCar], currentTime : Int){
-    println("=== Racing result at " +currentTime+ " second." )
+    println("=== Racing car state at " +currentTime+ " second." )
     var racingCarsRank = racingCars.sortBy{car => (-car.getCurrentDistance, car.getRacingTime)}
     racingCarsRank.foreach( c => println(c.toString))
   }

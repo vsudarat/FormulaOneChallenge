@@ -10,11 +10,6 @@ class NearByRuleAssessment(val handlingDistance: Int) extends IRacingRuleAssessm
 
   def assess(curentRacingCars: List[IRacingCar]): List[IRacingCar] = {
 
-    /*if (curentRacingCars.size == 2 && distanceLessThanTenMeters(curentRacingCars.head, curentRacingCars(1))) {
-      curentRacingCars.head.slowDown()
-      curentRacingCars(1).slowDown()
-      return curentRacingCars
-    }*/
     if(curentRacingCars.size > 2) {
 
         var sortedRacingCars = curentRacingCars.sortBy{car => car.getCurrentPosition}

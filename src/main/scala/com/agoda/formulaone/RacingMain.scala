@@ -34,7 +34,7 @@ object RacingMain extends App{
     var racing = new FOneRacingController(AgodaCarFactory,2, assessments)
     var racingRannk = racing.racing(numberOfCar, trackingLength)
     println("========================== Racing Result ============================")
-    racingRannk.sortBy{car => (car.finishTime)}.foreach(r => println(r.toString))
+    racingRannk.sortBy{car => (car.finishTime, -car.finalSpeed)}.foreach(r => println(r.toString))
   }
 
   run()
